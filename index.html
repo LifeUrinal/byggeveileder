@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Byggeveileder – din interaktive vei gjennom TEK17</title>
+<meta name="description" content="En interaktiv veileder gjennom byggeprosessen, fra forprosjekt til overlevering, med sjekklister basert på Byggteknisk forskrift (TEK17).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="paper-overlay" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <p class="eyebrow">Byggeveileder&nbsp;·&nbsp;TEK17</p>
+    <h1>Fra tegning til nøkkelferdig hus</h1>
+    <p class="intro">
+      Bla deg gjennom byggeprosessen langs tidslinjen til venstre, eller trykk direkte på en
+      del av huset til høyre for å hoppe til kravene som gjelder akkurat den bygningsdelen –
+      hentet fra Byggteknisk forskrift med veiledning (TEK17).
+    </p>
+  </div>
+  <svg class="header-flourish" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 6 C 40 -2, 60 14, 100 6 S 160 -2, 200 6" />
+  </svg>
+</header>
+
+<div class="layout">
+
+  <nav class="timeline" id="timeline" aria-label="Byggeprosessens faser"></nav>
+
+  <main class="content" id="content"></main>
+
+  <aside class="house-panel">
+    <div class="house-sticky">
+      <p class="house-caption">Trykk på huset</p>
+
+      <svg class="house-illustration" id="house-svg" viewBox="0 0 480 620" role="img" aria-labelledby="house-title">
+        <title id="house-title">Interaktiv husillustrasjon. Trykk på en bygningsdel for å se hvilket TEK17-krav som gjelder.</title>
+
+        <!-- Ground / tomt -->
+        <g class="house-part" data-component="tomt" tabindex="0" role="button">
+          <path class="tomt-ground" d="M0 560 C 90 540, 180 552, 260 546 C 340 540, 410 552, 480 542 L480 620 L0 620 Z"/>
+          <path class="tomt-boundary" d="M8 606 L472 606" stroke-dasharray="2 10"/>
+          <circle class="tomt-bush" cx="60" cy="548" r="16"/>
+          <circle class="tomt-bush" cx="82" cy="556" r="12"/>
+          <circle class="tomt-bush" cx="420" cy="552" r="14"/>
+        </g>
+
+        <!-- Decorative tree (non-interactive) -->
+        <g aria-hidden="true" class="decor-tree">
+          <path d="M434 560 C 430 520 438 500 434 470" class="tree-trunk"/>
+          <circle cx="430" cy="452" r="30"/>
+          <circle cx="452" cy="470" r="22"/>
+          <circle cx="410" cy="472" r="20"/>
+        </g>
+
+        <!-- Terrasse -->
+        <g class="house-part" data-component="terrasse" tabindex="0" role="button">
+          <rect x="46" y="524" width="120" height="26" rx="2"/>
+          <line x1="46" y1="536" x2="166" y2="536"/>
+          <line x1="66" y1="524" x2="66" y2="550"/>
+          <line x1="96" y1="524" x2="96" y2="550"/>
+          <line x1="126" y1="524" x2="126" y2="550"/>
+          <circle class="terrasse-pot" cx="58" cy="520" r="5"/>
+          <circle class="terrasse-pot" cx="154" cy="520" r="5"/>
+        </g>
+
+        <!-- Fundament / grunnmur -->
+        <g class="house-part" data-component="fundament" tabindex="0" role="button">
+          <rect x="150" y="520" width="240" height="42" />
+          <line x1="150" y1="533" x2="390" y2="533"/>
+          <line x1="150" y1="547" x2="390" y2="547"/>
+        </g>
+
+        <!-- Fasade / yttervegg -->
+        <g class="house-part" data-component="fasade" tabindex="0" role="button">
+          <rect x="150" y="330" width="240" height="192"/>
+        </g>
+
+        <!-- Vinduer -->
+        <g class="house-part" data-component="vinduer" tabindex="0" role="button">
+          <rect x="176" y="365" width="190" height="56" class="hit-area"/>
+          <g class="window">
+            <rect x="176" y="365" width="54" height="56"/>
+            <line x1="203" y1="365" x2="203" y2="421"/>
+            <line x1="176" y1="393" x2="230" y2="393"/>
+          </g>
+          <g class="window">
+            <rect x="312" y="365" width="54" height="56"/>
+            <line x1="339" y1="365" x2="339" y2="421"/>
+            <line x1="312" y1="393" x2="366" y2="393"/>
+          </g>
+        </g>
+
+        <!-- Balkong: fransk rekkverk foran vinduet -->
+        <g class="house-part" data-component="balkong" tabindex="0" role="button">
+          <rect x="303" y="418" width="72" height="22" class="hit-area"/>
+          <line x1="306" y1="421" x2="372" y2="421" class="balcony-rail"/>
+          <line x1="306" y1="437" x2="372" y2="437" class="balcony-rail"/>
+          <line x1="309" y1="421" x2="309" y2="437"/>
+          <line x1="320" y1="421" x2="320" y2="437"/>
+          <line x1="331" y1="421" x2="331" y2="437"/>
+          <line x1="342" y1="421" x2="342" y2="437"/>
+          <line x1="353" y1="421" x2="353" y2="437"/>
+          <line x1="364" y1="421" x2="364" y2="437"/>
+        </g>
+
+        <!-- Inngangsparti -->
+        <g class="house-part" data-component="inngang" tabindex="0" role="button">
+          <path d="M232 522 L244 522 L244 508 L296 508 L296 522 L308 522 L308 528 L232 528 Z" class="entry-steps"/>
+          <rect x="245" y="440" width="50" height="82" class="entry-door"/>
+          <circle cx="285" cy="483" r="2.6" class="entry-handle"/>
+        </g>
+
+        <!-- Tak -->
+        <g class="house-part" data-component="tak" tabindex="0" role="button">
+          <path d="M120 332 L270 168 L420 332 Z" class="roof-plane"/>
+          <path d="M270 168 L246 332 M270 168 L294 332" class="roof-ridge"/>
+        </g>
+
+        <!-- Takhatt / ventilasjon -->
+        <g class="house-part" data-component="takhatt" tabindex="0" role="button">
+          <line x1="192" y1="266" x2="192" y2="256"/>
+          <circle cx="192" cy="251" r="7"/>
+        </g>
+
+        <!-- Skorstein -->
+        <g class="house-part" data-component="skorstein" tabindex="0" role="button">
+          <rect x="330" y="150" width="26" height="96"/>
+          <rect x="326" y="144" width="34" height="10"/>
+        </g>
+      </svg>
+
+      <p class="house-hint" id="house-hint">Hold musepekeren over en bygningsdel, eller trykk for å hoppe til kravet.</p>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="site-footer">
+  <p>
+    Innholdet er strukturert med utgangspunkt i Byggteknisk forskrift (TEK17) med veiledning,
+    Direktoratet for byggkvalitet. Siden er et illustrativt hjelpemiddel for å gjøre
+    forskriften mer tilgjengelig, og erstatter ikke en konkret, juridisk vurdering av ditt
+    eget tiltak.
+  </p>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
